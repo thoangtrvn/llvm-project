@@ -1186,8 +1186,9 @@ TEST(MetadataTest, DbgVariableRecordConversionRoutines) {
   UseNewDbgInfoFormat = false;
 }
 
-// Test that the hashing function for DISubprograms produce the same result
-// after replacing the temporary scope.
+// Test that the hashing function for DISubprograms representing methods produce
+// the same result after replacing their scope (the type containing the
+// subprogram) from a temporary DIType with the permanent one.
 TEST(DIBuilder, HashingDISubprogram) {
   LLVMContext Ctx;
   std::unique_ptr<Module> M = std::make_unique<Module>("MyModule", Ctx);
